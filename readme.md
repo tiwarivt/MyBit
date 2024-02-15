@@ -1,1 +1,1 @@
-A donation app.
+Developed a microservices-based donation platform using Spring Boot for the back-end and React.js for the front-end. Designed and deployed a scalable RESTful API using Spring Boot and JPA, achieving separation of concerns and inversion of control (IoC). Developed features such as admin controls and user-NGO connectivity, enabling administrators to manage platform activities and facilitating seamless communication between users and NGOs.
