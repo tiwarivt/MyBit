@@ -2,7 +2,9 @@ package com.app.controller;
 
 import com.app.dto.DonationRequest;
 import com.app.dto.DonationResponse;
+import com.app.dto.DonationTableResponse;
 import com.app.service.DonationService;
+import com.app.service.DonationTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,9 @@ public class DonationController {
 
     @Autowired
     DonationService donationService;
+
+    @Autowired
+    DonationTableService donationTableService;
 
     @GetMapping("/list")
     ResponseEntity<?> getDonationList() {
@@ -31,9 +36,11 @@ public class DonationController {
     //For getting list of donation made by a particular person
     //Taking email as input so that we can use it as unique identifier
     @GetMapping("/{email}")
-    ResponseEntity<?> getDonorDonationList(@PathVariable String email){
+    ResponseEntity<?> getDonorDonationList(@PathVariable String email) {
         //Donation table id to frontend.
-        return null;
+        List<DonationTableResponse> responseList = donationTableService
+                .getAllDonationDoneByDonor(email);
+        return ResponseEntity.ok(responseList);
     }
 
 /*    @GetMapping("/payment/{amount}")

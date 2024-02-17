@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Document
@@ -16,12 +17,15 @@ import java.util.List;
 public class DonationTable {
     @Id
     private String id;
-    @DBRef
     private String userId;
     private List<String> donationId;
 
     public DonationTable(String userId, List<String> donationId) {
         this.userId = userId;
-        this.donationId = donationId;
+        if (donationId != null) {
+            this.donationId = new ArrayList<>(donationId); // Use existing list if not null
+        } else {
+            this.donationId = new ArrayList<>(); // Initialize with an empty list if null
+        }
     }
 }

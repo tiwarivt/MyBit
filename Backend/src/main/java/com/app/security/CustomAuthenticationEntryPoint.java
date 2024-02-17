@@ -12,12 +12,12 @@ import java.io.IOException;
 @Component
 public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
-	@Override
-	public void commence(HttpServletRequest request, HttpServletResponse response,
-			AuthenticationException authException) throws IOException, ServletException {
-		// send error message : SC 401
-		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
+    @Override
+    public void commence(HttpServletRequest request, HttpServletResponse response,
+                         AuthenticationException authException) throws IOException, ServletException {
+        // send error message : SC 401
+        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
 
-	}
+    }
 
 }

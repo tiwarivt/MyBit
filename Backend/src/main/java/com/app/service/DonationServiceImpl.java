@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,9 +56,15 @@ public class DonationServiceImpl implements DonationService {
                 .orElseThrow(() -> new ResourceNotFoundException("No user Present with email "
                         + donation.getDonorEmail()));
         DonationTable donationTable = donationTableRepo.findByUserId(getUser.getId())
-                .orElse(donationTableRepo
-                        .save(new DonationTable(getUser.getId(), List.of(new String[]{madeDonation.getId()}))));
-        donationTable.getDonationId().add(madeDonation.getId());
+                .orElseGet(() -> new DonationTable(getUser.getId(), Collections.emptyList()));
+
+        // Add the new donation ID to the existing list (avoiding duplicates)
+        if (!donationTable.getDonationId().contains(madeDonation.getId())) {
+            donationTable.getDonationId().add(madeDonation.getId());
+        }
+
+        // Save the updated DonationTable
+        donationTableRepo.save(donationTable);
         return mapper.map(madeDonation, DonationResponse.class);
     }
 }

@@ -44,8 +44,8 @@ public class AdminController {
         return ResponseEntity.ok(list);
     }
 
-    @PostMapping("/addannouncement")
-    ResponseEntity<?> approveAnnouncementReq(String id) {
+    @PostMapping("/addannouncement/{id}")
+    ResponseEntity<?> approveAnnouncementReq(@PathVariable String id) {
         AnnouncementResponse addedAnnouncement = announcementService.addAnnouncement(id);
         return ResponseEntity.ok(addedAnnouncement);
     }

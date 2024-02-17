@@ -30,10 +30,13 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 
     @Override
     public AnnouncementResponse addAnnouncement(String id) {
+        System.out.println(id);
         AnnounceRequest announceReq = announceRequestRepo.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Announcement Request With that ID not found"));
-        AnnouncementResponse resp = mapper.map(announceReq, AnnouncementResponse.class);
+        Announcement newAnnouncement = new Announcement(announceReq.getNgoName(), announceReq.getReq(), announceReq.getDate());
+        announcementRepo.save(newAnnouncement);
         announceRequestRepo.delete(announceReq);
+        AnnouncementResponse resp = new AnnouncementResponse("Announcement Added");
         return resp;
     }
 

@@ -24,8 +24,9 @@ public class SignInController {
 
     @Autowired
     private AuthenticationManager mgr;
+
     @PostMapping("/signin")
-    ResponseEntity<?> userSignIn(@RequestBody @Valid SigninRequest reqDTO){
+    ResponseEntity<?> userSignIn(@RequestBody @Valid SigninRequest reqDTO) {
         System.out.println("in signin " + reqDTO);
         // simply invoke authentucate(...) on AuthMgr
         // i/p : Authentication => un verifed credentials
@@ -33,13 +34,10 @@ public class SignInController {
         // throws exc OR rets : verified credentials (UserDetails i.pl class: custom
         // user details)
 
-        Authentication verifiedAuth = mgr
-                .authenticate(new UsernamePasswordAuthenticationToken
-                        (reqDTO.getEmail(), reqDTO.getPassword()));
+        Authentication verifiedAuth = mgr.authenticate(new UsernamePasswordAuthenticationToken(reqDTO.getEmail(), reqDTO.getPassword()));
         System.out.println(verifiedAuth.getClass());// Custom user details
         // => auth success
-        return ResponseEntity
-                .ok(new SigninResponse(utils.generateJwtToken(verifiedAuth), "Successful Authentication!!!"));
+        return ResponseEntity.ok(new SigninResponse(utils.generateJwtToken(verifiedAuth), "Successful Authentication!!!"));
     }
 
 }
