@@ -1,0 +1,60 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.volunteer-login-form-container {
+    margin-top: 4rem;
+  }
+  
+  .volunteer-login-form-alert {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .volunteer-login-form-label {
+    font-size: 1.2rem;
+  }
+  
+  .volunteer-login-form-input {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .volunteer-login-form-submit-btn {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: #28a745;
+  }
+  
+  .volunteer-login-form-submit-btn:hover {
+    background-color: #218838;
+  }
+  
+  .volunteer-login-form-modal-title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .volunteer-login-form-modal-body {
+    font-size: 1.5rem;
+  }
+  
+  .volunteer-login-form-modal-close-btn {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: #28a745;
+  }
+  
+  .volunteer-login-form-modal-close-btn:hover {
+    background-color: #218838;
+  }
+  
